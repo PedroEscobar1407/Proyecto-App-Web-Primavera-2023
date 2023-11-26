@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
+    {% block css %}{% endblock %}
+</head>
+<body>
+    <div class="main">
+    <nav>
+        <div class="nav-bar">
+            <ul>
+                <li><a href="{{ url_for('index') }}">Menu</a></li>
+                <li><a href="{{ url_for('agregar_hincha') }}">Registrar Hincha</a></li>
+                <li><a href="{{ url_for('agregar_artesano') }}">Registrar Artesano</a></li>
+                <li><a href="{{ url_for('ver_hincha') }}">Ver listado de hinchas</a></li>
+                <li><a href="{{ url_for('ver_artesanos') }}">Ver listado de artesanos</a></li>
+                <li><a href="{{ url_for('stats') }}">Estadisticas</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        {% block content %}{% endblock %}{% block javascript %}{% endblock %}
+    </div> 
+    </div>
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+    {% block js %}{% endblock %}
+</body>
+</html>

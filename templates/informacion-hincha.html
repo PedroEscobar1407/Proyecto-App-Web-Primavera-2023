@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Info Hincha{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/informacion-hincha.css')}}">
+{% endblock %}
+{% block content %}
+{%for hincha in hinchas%}
+    <div id="main-container" class="main-container">
+        <p class="presentation">{{hincha.nombre}}</p>
+        <p class="presentation">{{hincha.comuna}}</p>
+        <p class="presentation">{{hincha.deportes}}</p>
+        <p class="presentation">{{hincha.transporte}}</p>
+        <p class="presentation">{{hincha.telefono}}</p>
+    </div>
+{%endfor%}
+{%endblock%}
+{%block js%}
+{%endblock%}
+    

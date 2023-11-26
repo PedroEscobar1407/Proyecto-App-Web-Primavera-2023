@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block title %}Registrar Artesano{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/agregar-hincha.css') }}">
+{% endblock %}
+{% block content %}
+{% if error %}
+<div class="error-msg">
+  {{ error }}
+</div>
+{% endif %}
+<div class="main-container">
+  <div id="val-box" hidden>
+    <ul id="val-msg"></ul>
+    <ul id="val-list"></ul>
+  </div>
+  <form name="artesanoform" id="artesanoform" action="agregar_artesano" method="POST" enctype="multipart/form-data">
+    <div id="region" class="grupo-input">
+      <label for="regiones">Region</label>
+      <select name="regiones" id="regiones">
+        <option value="0">Seleccione una region</option>
+        <option value="1">Región de Tarapacá</option>
+        <option value="2">Región de Antofagasta</option>
+        <option value="3">Región de Atacama</option>
+        <option value="4">Región de Coquimbo</option>
+        <option value="5">Región de Valparaíso</option>
+        <option value="6">Región del Libertador Bernardo O'Higgins</option>
+        <option value="7">Región del Maule</option>
+        <option value="8">Región del Biobío</option>
+        <option value="9">Región de La Araucanía</option>
+        <option value="10">Región de Los Lagos</option>
+        <option value="11">Región Aisén del General Carlos Ibáñez del Campo</option>
+        <option value="12">Región de Magallanes y la Antártica Chilena</option>
+        <option value="13">Región Metropolitana de Santiago</option>
+        <option value="14">Región de Los Ríos</option>
+        <option value="15">Región Arica y Parinacota</option>
+        <option value="16">Región del Ñuble</option>
+      </select>
+    </div>
+    <div id="comuna" class="grupo-input">
+      <label for="comunas">Comuna</label>
+      <select id="comunas" name="comunas">
+        <option value="" selected disabled hidden>Seleccione una comuna</option>
+      </select>
+    </div>
+    <div id="tipo" class="grupo-input">
+      <label for="tipos">Tipo de artesanía</label>
+      <select id="tipos" name="tipos" multiple>
+        <option value="0">Seleccione un tipo de artesano</option>
+        <option value="1">Mármol</option>
+        <option value="2">Madera</option>
+        <option value="3">Cerámica</option>
+        <option value="4">Mimbre</option>
+        <option value="5">Metal</option>
+        <option value="6">Cuero</option>
+        <option value="7">Telas</option>
+        <option value="8">Joyas</option>
+        <option value="9">Otro tipo</option>
+      </select>
+    </div>
+    <div id="descripciones" class="grupo-input">
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" name="descripcion" rows="4" cols="50"></textarea>
+    </div>
+    <div id="foto" class="grupo-input">
+      <label for="fotos">Fotos</label>
+      <input type="file" name="fotos" id="fotos" accept="image/*" required multiple><br>
+    </div>
+    <div id="nombre-input" class="grupo-input">
+      <label for="nombres">Nombre</label>
+      <input id="nombres" name="nombres" type="text" size="80" minlength="3" maxlength="80" placeholder="Ingrese nombres">
+    </div>
+    <div id="email-input" class="grupo-input">
+      <label for="email">Email Contacto</label>
+      <input id="email" name="email" type="email" size="30" placeholder="Ingrese email">
+    </div>
+    <div id="telefono-input" class="grupo-input">
+      <label for="telefono">Teléfono Contacto</label>
+      <input id="telefono" name="telefono" type="text" size="30">
+    </div>
+    <button id="envio" type="button">Registrar Artesano</button>
+    <div id="myModal" class="main-container" hidden>
+      <div class="main-container">
+        <p>¿Confirma el registro de este artesano?</p>
+        <button id="confirmabtn" type="submit">Sí, confirmo</button>
+        <button id="no-confirmabtn" type="button">No, quiero volver al formulario</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
+{% block js %}
+<script src="{{url_for('static', filename='js/agregar-artesano.js') }}"></script>
+<script src="{{ url_for('static', filename='js/comunas.js') }}"></script>
+{% endblock %}

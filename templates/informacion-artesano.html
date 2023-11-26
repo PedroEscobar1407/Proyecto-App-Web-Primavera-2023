@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+{%block title%}Info Artesano{%endblock%}
+{%block css%}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/informacion-artesano.css')}}">
+{%endblock%}
+{%block content%}
+{%for artesano in artesanos%}
+    <div id="info-container" class="info-container">
+        <p class="presentation">{{artesano.nombre}}</p>
+        <p class="presentation">{{artesano.telefono}}</p>
+        <p class="presentation">{{artesano.comuna}}</p>
+        <p class="presentation">{{artesano.tipo_artesanias}}</p>
+    </div>
+    <div id="photo-presentation" class="photo-presentation">
+        {%for path in artesano.path_images %}
+        {%set img = 'img' + loop.index|string %}
+        <img src="{{path}}" alt="Image" id="{{img}}" width="640" height="480" onclick="imagenAjuste('{{img}}')">
+        {%endfor%}
+    </div>
+{%endfor%}
+{%endblock%}
+    
+{%block js%}  
+<script src="{{url_for('static',filename='js/imagen.js')}}"></script>
+{%endblock%}

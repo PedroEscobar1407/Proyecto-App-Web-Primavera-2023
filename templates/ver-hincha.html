@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Ver Hinchas{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/ver-hincha.css')}}">
+{% endblock %}
+{% block content %}
+    <div class="hincha-table">
+      <table>
+          <tr>
+            <th>Nombre</th>
+            <th>Comuna</th>
+            <th>Deportes</th>
+            <th>Modo de Transporte</th>
+            <th>Número de Celular</th>
+          </tr>
+          {% for hincha in hinchas %}
+          <tr onclick="window.location='/informacion_hincha/{{hincha.id}}';">
+            <td>{{hincha.nombre}}</td>
+            <td>{{hincha.comuna}}</td>
+            <td>{{hincha.deportes}}</td>
+            <td>{{hincha.transporte}}</td>
+            <td>{{hincha.telefono}}</td>
+          </tr>
+          {% endfor %}
+      </table>
+    </div>
+    <footer class="pagination-bar" aria-label="Page navigation">
+      <ul class="pagination">
+        <li class="page-items">
+          {% if prev >= 1 %}
+          <a class="page-link" href="/ver_hincha/{{prev}}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Anterior</span>
+          </a>
+          {% endif %}
+        </li>
+        {% for page in range(1, pages+1) %}
+        <li class="page-items"><a class="page-link" href="/ver_hincha/{{page}}">{{page}}</a></li>
+        {% endfor %}
+    
+        <li class="page-items">
+          {% if next <= pages %}
+          <a class="page-link" href="/ver_hincha/{{next}}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Siguiente</span>
+          </a>
+          {% endif %}
+        </li>
+      </ul>
+    </footer>
+{% endblock %}

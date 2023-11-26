@@ -1,0 +1,149 @@
+{%extends 'base.html'%}
+{%block title%}Registrar Hincha{%endblock%}
+{%block css%}
+<link rel="stylesheet" href="{{url_for('static', filename='css/agregar-hincha.css')}}">
+{%endblock%}
+{%block content%}
+{% if error %}
+<div class="error-msg">
+  {{ error }}
+</div>
+{% endif %}
+  <div class="main-container">
+    <div id="val-box" hidden>
+      <ul id="val-msg"></ul>
+      <ul id="val-list"></ul>
+    </div>
+    <form name="hinchaform" id="hinchaform" method="POST" action="agregar_hincha" enctype="multipart/form-data">
+        <div id="deportes-input" class="grupo-input">
+          <label for="deportes">Deporte(s) que le interesa apoyar</label>
+          <select name="deportes" id="deportes" multiple>
+            <option value="1">Clavados</option>
+            <option value="2">Natación</option>
+            <option value="3">Natación artística</option>
+            <option value="4">Polo acuático</option>
+            <option value="5">Natación en Aguas abiertas</option>
+            <option value="6">Maratón</option>
+            <option value="7">Marcha</option>
+            <option value="8">Atletismo</option>
+            <option value="9">Bádminton</option>
+            <option value="10">Balonmano</option>
+            <option value="11">Básquetbol</option>
+            <option value="12">Básquetbol 3x3</option>
+            <option value="13">Béisbol</option>
+            <option value="14">Boxeo</option>
+            <option value="15">Bowling</option>
+            <option value="16">Breaking</option>
+            <option value="17">Canotaje Slalom</option>
+            <option value="18">Canotaje de velocidad</option>
+            <option value="19">BMX Freestyle</option>
+            <option value="20">BMX Racing</option>
+            <option value="21">Mountain Bike</option>
+            <option value="22">Ciclismo pista</option>
+            <option value="23">Ciclismo ruta</option>
+            <option value="24">Adiestramiento ecuestre</option>
+            <option value="25">Evento completo ecuestre</option>
+            <option value="26">Salto ecuestre</option>
+            <option value="27">Escalada deportiva</option>
+            <option value="28">Esgrima</option>
+            <option value="29">Esquí acuático y Wakeboard</option>
+            <option value="30">Fútbol</option>
+            <option value="31">Gimnasia artística Masculina</option>
+            <option value="32">Gimnasia artística Femenina</option>
+            <option value="33">Gimnasia rítmica</option>
+            <option value="34">Gimnasia trampolín</option>
+            <option value="35">Golf</option>
+            <option value="36">Hockey césped</option>
+            <option value="37">Judo</option>
+            <option value="38">Karate</option>
+            <option value="39">Levantamiento de pesas</option>
+            <option value="40">Lucha</option>
+            <option value="41">Patinaje artístico</option>
+            <option value="42">Skateboarding</option>
+            <option value="43">Patinaje velocidad</option>
+            <option value="44">Pelota vasca</option>
+            <option value="45">Pentatlón moderno</option>
+            <option value="46">Racquetball</option>
+            <option value="47">Remo</option>
+            <option value="48">Rugby 7</option>
+            <option value="49">Sóftbol</option>
+            <option value="50">Squash</option>
+            <option value="51">Surf</option>
+            <option value="52">Taekwondo</option>
+            <option value="53">Tenis</option>
+            <option value="54">Tenis de mesa</option>
+            <option value="55">Tiro</option>
+            <option value="56">Tiro con arco</option>
+            <option value="57">Triatlón</option>
+            <option value="58">Vela</option>
+            <option value="59">Vóleibol</option>
+            <option value="60">Vóleibol playa</option>
+         </select>        
+        </div>
+        <div id="region" class="grupo-input">
+          <label for="regiones">Region</label>
+          <select name="regiones" id="regiones">
+            <option value="0">Seleccione una region</option>
+            <option value="1">Región de Tarapacá</option>
+            <option value="2">Región de Antofagasta</option>
+            <option value="3">Región de Atacama</option>
+            <option value="4">Región de Coquimbo</option>
+            <option value="5">Región de Valparaíso</option>
+            <option value="6">Región del Libertador Bernardo O'Higgins</option>
+            <option value="7">Región del Maule</option>
+            <option value="8">Región del Biobío</option>
+            <option value="9">Región de La Araucanía</option>
+            <option value="10">Región de Los Lagos</option>
+            <option value="11">Región Aisén del General Carlos Ibáñez del Campo</option>
+            <option value="12">Región de Magallanes y la Antártica Chilena</option>
+            <option value="13">Región Metropolitana de Santiago</option>
+            <option value="14">Región de Los Ríos</option>
+            <option value="15">Región Arica y Parinacota</option>
+            <option value="16">Región del Ñuble</option>
+          </select>
+        </div>
+        <div id="comuna" class="grupo-input">
+          <label for="comunas">Comuna</label>
+          <select id="comunas" name="comunas">
+            <option value="" selected disabled hidden>Seleccione una comuna</option>
+          </select>
+        </div>
+        <div id="transporte-input" class="grupo-input">
+            <label for="transportes">Modo de transporte</label>
+            <select name="transportes" id="transportes">
+              <option value="">Seleccione un modo de transporte</option>
+              <option value="Particular">Particular</option>
+              <option value="Locomoción Pública">Locomoción Pública</option>
+            </select>
+        </div>
+        <div id="nombre-input" class="grupo-input">
+          <label for="nombres">Nombre</label>
+          <input id="nombres" name="nombres" type="text" size="80" minlength="3" maxlength="80" required>
+        </div>
+        <div id="email-input" class="grupo-input">
+          <label for="email">Email Contacto</label>
+          <input id="email" name="email" type="email" size="30" required>
+        </div>
+        <div id="numero-input" class="grupo-input">
+            <label for="numero">Numero celular contacto</label>
+            <input id="numero" name="numero" type="text" size="15" required>
+        </div>
+        <div id="comentario-input" class="grupo-input">
+            <label for="comentarios">Comentarios adicionales</label>
+            <input id="comentarios" name="comentarios" type="text" size="80">
+        </div>
+        <button id="envio" type="button" >Registrar Hincha</button>
+        <div id="myModal" class="main-container" hidden>
+          <div class="main-container" >
+            <p>¿Confirma el registro de este hincha?</p>
+            <button id="confirmabtn" type="submit">Sí, confirmo</button>
+            <button id="no-confirmabtn" type="button">No, quiero volver al formulario</button>
+          </div>
+        </div>
+    </form>
+  </div>
+{%endblock%}
+{%block js%}
+  <script src="{{url_for('static', filename='js/agregar-hincha.js')}}"></script>
+  <script src="{{url_for('static', filename='js/comunas.js')}}"></script>
+{%endblock%}

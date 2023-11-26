@@ -1,0 +1,67 @@
+
+body {
+    height: 100%;
+    margin: 0;
+    font-family: sans-serif;
+    font-weight: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    padding-top: 70px; 
+}
+
+.main-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    background-clip: padding-box; 
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 800px;
+    margin-top: 70px; 
+    margin-bottom: 20px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-container p {
+    font-size: 20px;
+    margin: 15px 0;
+    color: #333;
+}
+
+.artesania-fotos {
+    cursor: pointer;
+}
+
+#volver {
+    text-decoration: none;
+    color: #fff;
+    background-color: #49a09d;
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-top: 20px;
+    display: block;
+}
+
+#volver:hover {
+    background-color: #5f2c82;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #49a09d;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.button:hover {
+    background-color: #5f2c82;
+}
